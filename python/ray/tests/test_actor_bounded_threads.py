@@ -82,7 +82,7 @@ def test_threaded_actor_have_bounded_num_of_threads(shutdown_only):
         def add(self, i, j):
             return i + j
 
-    a = A.options(max_concurrency=2).remote()
+    a = A.options(max_concurrency=1).remote()
 
     prev_threads = ray.get(a.get_my_threads.remote())
 
@@ -108,7 +108,7 @@ def test_async_actor_have_bounded_num_of_threads(shutdown_only):
         async def add(self, i, j):
             return i + j
 
-    a = A.options(max_concurrency=2).remote()
+    a = A.options(max_concurrency=1).remote()
 
     prev_threads = ray.get(a.get_my_threads.remote())
 
@@ -153,7 +153,7 @@ def test_async_actor_cg_have_bounded_num_of_threads(shutdown_only):
         assert ray.get(a.compute_add.remote(4, 5)) == 9
         return ray.get(a.default_add.remote(f1, f2))
 
-    a = A.options(max_concurrency=2).remote()
+    a = A.options(max_concurrency=1).remote()
 
     prev_threads = ray.get(a.get_my_threads.remote())
 
