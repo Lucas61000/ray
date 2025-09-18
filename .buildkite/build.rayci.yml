@@ -1,5 +1,18 @@
 group: build
 steps:
+  - name: wanda_wheel_py{{matrix}}
+    label: "wanda: wheel py{{matrix}} (x86_64)"
+    wanda: ci/wheel.wanda.yaml
+    matrix:
+      - "3.9"
+      - "3.10"
+      - "3.11"
+      - "3.12"
+      - "3.13"
+    env:
+      PYTHON_VERSION: "{{matrix}}"
+      ARCH_SUFFIX: ""
+
   - label: ":tapioca: build: wheel {{matrix}} (x86_64)"
     key: linux_wheels
     tags:
