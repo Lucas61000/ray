@@ -95,9 +95,7 @@ OpenTelemetryMetricRecorder::OpenTelemetryMetricRecorder() {
           meter_provider_));
 }
 
-void OpenTelemetryMetricRecorder::ForceFlush() {
-  meter_provider_->ForceFlush();
-}
+void OpenTelemetryMetricRecorder::ForceFlush() { meter_provider_->ForceFlush(); }
 
 void OpenTelemetryMetricRecorder::Shutdown() {
   bool expected = false;

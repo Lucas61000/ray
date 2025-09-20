@@ -66,7 +66,7 @@ class OpenTelemetryMetricRecorder {
 
   // Force flush the remaining metrics.
   void ForceFlush();
-  
+
   // Flush the remaining metrics. Note that this is a reset rather than a complete
   // shutdown, so it can be consistent with the shutdown behavior of stats.h.
   void Shutdown();
